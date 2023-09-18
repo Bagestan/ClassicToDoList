@@ -1,0 +1,49 @@
+<nz-card style="width: 300px" nzTitle="Nova Tarefa" [nzExtra]="closeTemplate">
+  <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your username!">
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="title"
+            placeholder="Título"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your Password!">
+        <nz-input-group>
+          <textarea
+            rows="4"
+            nz-input
+            formControlName="content"
+            placeholder="Descrição"
+          ></textarea>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button
+      nzBlock
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+    >
+      Salvar
+    </button>
+  </form>
+</nz-card>
+
+<ng-template #closeTemplate>
+  <button
+    nz-button
+    nzType="default"
+    nzSize="small"
+    nzShape="circle"
+    nzDanger
+    (click)="close()"
+  >
+    <span nz-icon nzType="close" nzTheme="outline"></span></button
+></ng-template>

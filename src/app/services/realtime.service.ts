@@ -1,11 +1,19 @@
-import { Injectable, inject } from '@angular/core';
-import { Database } from '@angular/fire/database';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RealtimeService {
-  private database: Database = inject(Database);
+  constructor(private db: AngularFireDatabase) {}
 
-  constructor() {}
+  insert(db: string, object: {}) {
+    this.db
+      .list(db)
+      .push(object)
+      .then((result) => {
+        console.log(result);
+        console.log(result.key);
+      });
+  }
 }
