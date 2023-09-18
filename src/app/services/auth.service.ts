@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 export class AuthService {
   isPermission = false;
 
-  private auth: Auth = inject(Auth);
-  // idToken$ = idToken(this.auth);
   idTokenSubscription: Subscription = new Subscription();
 
   constructor(
