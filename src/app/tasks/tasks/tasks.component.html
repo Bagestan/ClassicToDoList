@@ -1,7 +1,29 @@
 <nz-header
   ><h1>Classic To Do List</h1>
 
-  <button nzType="default" nz-button (click)="signOut()">
-    <span nz-icon nzType="logout" nzTheme="outline"></span> Deslogar
-  </button>
+  <div class="header-options">
+    <button
+      class="border-radius"
+      nzType="default"
+      nz-button
+      (click)="signOut()"
+    >
+      <span nz-icon nzType="logout" nzTheme="outline"></span> Deslogar
+    </button>
+  </div>
 </nz-header>
+<nz-content>
+  <h1 style="color: black">Tasks</h1>
+  <nz-list nzItemLayout="horizontal">
+    <nz-list-item *ngFor="let task of tasks">
+      <nz-list-item-meta>
+        <nz-list-item-meta-title>
+          <a>{{ task.title }}</a>
+        </nz-list-item-meta-title>
+        <nz-list-item-meta-description>
+          {{ task.content }}
+        </nz-list-item-meta-description>
+      </nz-list-item-meta>
+    </nz-list-item>
+  </nz-list>
+</nz-content>

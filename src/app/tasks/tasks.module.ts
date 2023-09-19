@@ -12,6 +12,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 @NgModule({
   declarations: [TaskFormComponent, TasksComponent],
@@ -25,6 +26,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     NzButtonModule,
     NzIconModule,
     NzLayoutModule,
+    NzListModule,
   ],
 })
 export class TasksModule {}
