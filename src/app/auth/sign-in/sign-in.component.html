@@ -1,9 +1,11 @@
 <div class="wrapper">
   <nz-card class="wrapper__form">
-    <h1 nz-typography>PYGG</h1>
+    <h1 nz-typography>Classic To Do List</h1>
+    <h4 nz-typography>Login</h4>
+
     <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submit()">
       <nz-form-item>
-        <nz-form-control nzErrorTip="Por favor, preencha seu email!">
+        <nz-form-control nzErrorTip="Digite seu email">
           <nz-input-group nzPrefixIcon="mail">
             <input
               type="text"
@@ -32,10 +34,10 @@
             </ng-template>
             <ng-template #passwordError let-control>
               <ng-container *ngIf="control.hasError('required')"
-                >Por favor confirme sua senha!</ng-container
+                >Digite sua senha</ng-container
               >
               <ng-container *ngIf="control.hasError('minlength')"
-                >Tamanho mínimo 8!</ng-container
+                >Tamanho mínimo 8</ng-container
               >
             </ng-template>
           </nz-input-group>
@@ -48,7 +50,7 @@
           </label>
         </div>
         <div nz-col [nzSpan]="12">
-          <a routerLink="/auth/request-password" class="login-form-forgot"
+          <a routerLink="/auth/resetPassword" class="login-form-forgot"
             >Esqueci a senha</a
           >
         </div>
@@ -63,7 +65,19 @@
         Entrar
       </button>
       Ou
-      <a routerLink="/auth/singUp">Realizar Cadastro</a>
+      <a routerLink="/auth/signup">Criar Cadastro</a>
     </form>
   </nz-card>
+  <div class="wrapper__form">
+    <button
+      nz-button
+      class="skip-login-button"
+      nzType="default"
+      [nzLoading]="isLoading"
+      routerLink="/tasks"
+    >
+      <span nz-icon nzType="robot" nzTheme="outline"></span>
+      Entrar sem cadastro
+    </button>
+  </div>
 </div>

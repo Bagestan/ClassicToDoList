@@ -15,9 +15,10 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent],
+  declarations: [SignInComponent, SignUpComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -1,1 +1,97 @@
-<p>sign-up works!</p>
+<div class="wrapper">
+  <nz-card class="wrapper__form">
+    <h1 nz-typography>Classic To Do List</h1>
+    <h4 nz-typography>Registre-se</h4>
+    <form nz-form [formGroup]="form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Preencha seu email">
+          <nz-input-group nzPrefixIcon="mail">
+            <input
+              type="text"
+              nz-input
+              formControlName="email"
+              placeholder="Email"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="passwordError">
+          <nz-input-group
+            nzPrefixIcon="lock"
+            [nzSuffix]="passwordSuffixTemplate"
+          >
+            <input
+              [type]="passwordVisible ? 'text' : 'password'"
+              nz-input
+              formControlName="password"
+              placeholder="Senha"
+            />
+
+            <ng-template #passwordSuffixTemplate>
+              <span
+                nz-icon
+                [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                (click)="passwordVisible = !passwordVisible"
+              ></span>
+            </ng-template>
+
+            <ng-template #passwordError let-control>
+              <ng-container *ngIf="control.hasError('required')"
+                >Digite a senha</ng-container
+              >
+              <ng-container *ngIf="control.hasError('minlength')"
+                >Tamanho mínimo 8</ng-container
+              >
+              <ng-container *ngIf="control.hasError('passwordUnmatch')"
+                >As senhas não são iguais</ng-container
+              >
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="checkPasswordError">
+          <nz-input-group
+            nzPrefixIcon="lock"
+            [nzSuffix]="checkPasswordSuffixTemplate"
+          >
+            <input
+              [type]="checkPasswordVisible ? 'text' : 'password'"
+              nz-input
+              formControlName="checkPassword"
+              placeholder="Confirme a senha"
+            />
+
+            <ng-template #checkPasswordSuffixTemplate>
+              <span
+                nz-icon
+                [nzType]="checkPasswordVisible ? 'eye' : 'eye-invisible'"
+                (click)="checkPasswordVisible = !checkPasswordVisible"
+              ></span>
+            </ng-template>
+
+            <ng-template #checkPasswordError let-control>
+              <ng-container *ngIf="control.hasError('required')"
+                >Digite a senha</ng-container
+              >
+              <ng-container *ngIf="control.hasError('minlength')"
+                >Tamanho mínimo 8</ng-container
+              >
+              <ng-container *ngIf="control.hasError('passwordUnmatch')"
+                >As senhas não são iguais</ng-container
+              >
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button class="register-button" nzBlock nz-button nzType="primary">
+        Register
+      </button>
+      Ou
+      <a routerLink="/auth/signin">retornar ao login</a>
+    </form>
+  </nz-card>
+</div>

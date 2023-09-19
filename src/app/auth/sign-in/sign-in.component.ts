@@ -17,7 +17,7 @@ export class SignInComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
+    private auth: AuthService,
     private fb: FormBuilder
   ) {}
 
@@ -36,11 +36,9 @@ export class SignInComponent {
   submit() {
     if (this.form.valid) {
       const { email, password, rememberMe } = this.form.getRawValue();
-      this.authService
-        .emailSignIn(email, password, rememberMe)
-        .subscribe(() => {
-          this.router.navigate(['main']);
-        });
+      this.auth.emailSignIn(email, password, rememberMe).subscribe(() => {
+        this.router.navigate(['tasks']);
+      });
     } else {
       Object.values(this.form.controls).forEach((control) => {
         if (control.invalid) {
@@ -50,4 +48,6 @@ export class SignInComponent {
       });
     }
   }
+
+  enterWithoutRegistration() {}
 }

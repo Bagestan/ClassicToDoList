@@ -1,18 +1,15 @@
-import { Injectable, inject } from '@angular/core';
-import { Auth, idToken } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
-import { Observable, Subscription, catchError, from, map, of } from 'rxjs';
+import { catchError, from, of } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isPermission = false;
-
-  idTokenSubscription: Subscription = new Subscription();
+  auth = getAuth();
 
   constructor(
     private angularAuth: AngularFireAuth,
@@ -20,28 +17,50 @@ export class AuthService {
     private router: Router
   ) {}
 
+  getUid() {
+    if (this.auth.currentUser) {
+      return this.auth.currentUser.uid;
+    }
+    return null;
+  }
+
   emailSignIn(email: string, password: string, isPersistence = false) {
     const persistence = isPersistence ? 'session' : 'local';
     this.angularAuth.setPersistence(persistence);
     return from(
       this.angularAuth.signInWithEmailAndPassword(email, password)
     ).pipe(
-      map(
-        (userCredential: any) => {
-          console.log(userCredential);
-        },
-        catchError((error) =>
-          of(this.message.error(`${error.message}`, { nzDuration: 3500 }))
-        )
+      catchError((error) =>
+        of(this.message.error(`${error.message}`, { nzDuration: 3500 }))
       )
     );
   }
 
   async signOut() {
-    await this.angularAuth.signOut().then(() => this.router.navigate(['']));
+    await this.angularAuth.signOut().then(() => this.reditectToSingIn());
   }
 
-  getIsPermission(): boolean {
-    return this.isPermission;
+  async singUp(email: string, pasword: string): Promise<any> {
+    return this.angularAuth.createUserWithEmailAndPassword(email, pasword);
   }
+
+  async forgetPassword(email: string): Promise<any> {
+    return this.angularAuth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        this.message.success(`
+        Email de recuperação enviado!  Verifique a caixa de email e o Spam
+        `);
+        this.reditectToSingIn();
+      })
+      .catch((error) => {
+        this.message.error(error.message);
+      });
+  }
+
+  reditectToSingIn() {
+    this.router.navigate(['/auth', 'signin']);
+  }
+
+  enterWithoutRegistration() {}
 }

@@ -3,3 +3,18 @@
 .w-100 {
   width: 100%;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh);
+  width: calc(100vw);
+}
+
+.wrapper__form {
+  width: 100%;
+  max-width: 25rem;
+  margin: 0 0.5rem;
+}
