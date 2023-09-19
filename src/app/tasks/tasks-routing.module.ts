@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { TasksComponent } from './tasks/tasks.component';
 
-const routes: Routes = [{ path: '', component: TaskFormComponent }];
+const routes: Routes = [
+  { path: 'form', component: TaskFormComponent },
+  { path: '', component: TasksComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { getAuth } from 'firebase/auth';
+import { AuthService } from 'src/app/services/auth.service';
 import { RealtimeService } from 'src/app/services/realtime.service';
 
 @Component({
@@ -10,11 +10,14 @@ import { RealtimeService } from 'src/app/services/realtime.service';
 })
 export class TaskFormComponent {
   form: FormGroup;
-  auth = getAuth();
+  uid: string | null;
 
-  constructor(private fb: FormBuilder, private realtimeDB: RealtimeService) {
-    this.auth.currentUser?.uid;
-    console.log('🚀 ~ this.auth.currentUser?.uid:', this.auth.currentUser?.uid);
+  constructor(
+    private fb: FormBuilder,
+    private realtimeDB: RealtimeService,
+    private auth: AuthService
+  ) {
+    this.uid = this.gerUid();
 
     this.form = this.fb.group({
       title: '',
@@ -24,8 +27,12 @@ export class TaskFormComponent {
 
   submit() {
     if (this.form.valid) {
-      this.realtimeDB.insert('tasks', this.form.value);
+      this.realtimeDB.insert(`tasks/${this.uid}`, this.form.value);
     }
+  }
+
+  gerUid() {
+    return this.auth.getUid();
   }
 
   close() {
