@@ -1,3 +1,15 @@
-nz-card {
-  margin: 0 auto;
+form {
+  margin-top: 1rem;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nz-content {
+  max-width: 60rem;
+  margin: auto;
+  padding: 1rem;
 }

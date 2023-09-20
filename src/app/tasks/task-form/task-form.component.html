@@ -1,19 +1,36 @@
-<nz-card style="width: 300px" nzTitle="Nova Tarefa" [nzExtra]="closeTemplate">
-  <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submit()">
+<nz-content>
+  <div class="task-header">
+    <h2 style="color: black">New Task</h2>
+
+    <button
+      class="border-radius icon-button margin-right"
+      nzType="default"
+      nz-button
+      (click)="close()"
+    >
+      <span nz-icon nzType="close" nzTheme="outline"></span>
+    </button>
+  </div>
+
+  <form nz-form [formGroup]="form" class="login-form">
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
-        <nz-input-group nzPrefixIcon="user">
+      <nz-form-control
+        class="margin-right"
+        nzErrorTip="Título é obrigatório e deve conter até 40 caracteres"
+      >
+        <nz-input-group nzPrefixIcon="thunderbolt">
           <input
             type="text"
             nz-input
+            nzBorderless
             formControlName="title"
-            placeholder="Título"
+            placeholder="Tarefa"
           />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-form-control nzErrorTip="Max 210 caracteres" class="margin-right">
         <nz-input-group>
           <textarea
             rows="4"
@@ -25,25 +42,28 @@
       </nz-form-control>
     </nz-form-item>
 
-    <button
-      nzBlock
-      nz-button
-      class="login-form-button login-form-margin"
-      [nzType]="'primary'"
-    >
-      Salvar
-    </button>
+    <div class="space-between">
+      <button
+        nz-button
+        class="border-radius"
+        nzType="default"
+        (click)="submit()"
+      >
+        Salvar
+      </button>
+      <button
+        *ngIf="task"
+        class="border-radius icon-button task-option margin-right"
+        [nzType]="task.done ? 'default' : 'primary'"
+        nz-button
+      >
+        <span
+          (click)="doneTask(task)"
+          nz-icon
+          [nzType]="task.done ? 'check' : 'border'"
+          nzTheme="outline"
+        ></span>
+      </button>
+    </div>
   </form>
-</nz-card>
-
-<ng-template #closeTemplate>
-  <button
-    nz-button
-    nzType="default"
-    nzSize="small"
-    nzShape="circle"
-    nzDanger
-    (click)="close()"
-  >
-    <span nz-icon nzType="close" nzTheme="outline"></span></button
-></ng-template>
+</nz-content>
