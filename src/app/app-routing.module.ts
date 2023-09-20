@@ -7,6 +7,7 @@ import {
   redirectUnauthorizedTo,
 } from '@angular/fire/compat/auth-guard';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from './config/config.module';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo('auth');
 const redirectUnauthorizedToMain = () => redirectLoggedInTo('');
@@ -22,6 +23,12 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(() => AuthModule),
     ...canActivate(redirectUnauthorizedToMain),
+  },
+  {
+    path: 'config',
+    loadChildren: () =>
+      import('./config/config.module').then(() => ConfigModule),
+    ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
 
