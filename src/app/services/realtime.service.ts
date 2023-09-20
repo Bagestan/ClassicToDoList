@@ -1,21 +1,45 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Task } from '../tasks/models/model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RealtimeService {
-  constructor(private db: AngularFireDatabase) {}
+  uid: string | null;
 
-  insert(db: string, object: {}) {
-    this.db.list(db).push(object);
+  constructor(private db: AngularFireDatabase, private auth: AuthService) {
+    this.uid = auth.getUid();
   }
 
-  getUserTasks(uid: string) {
-    return this.db.list(`tasks/${uid}`).valueChanges();
-    // .subscribe((data) => {
-    //   console.log('🚀 ~ getUserTasks:', data);
-    //   return data;
-    // });
+  async insertTask(task: Task) {
+    const ref = this.db.database.ref(`tasks/${this.uid}`).push();
+    task.id = ref.key;
+    console.log('🚀 ~ ref:', ref);
+
+    try {
+      return await ref.set(task);
+    } catch (error) {
+      return console.error(error);
+    }
+  }
+
+  getUserTasks() {
+    return this.db.list(`tasks/${this.uid}`).valueChanges();
+  }
+
+  getTask(taskId: string) {
+    return this.db.list(`tasks/${this.uid}/${taskId}`).valueChanges();
+  }
+
+  async updateTask(task: Task) {
+    try {
+      return await this.db.database
+        .ref(`tasks/${this.uid}/${task.id}`)
+        .update(task);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

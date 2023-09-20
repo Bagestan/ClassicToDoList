@@ -13,6 +13,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzListModule } from 'ng-zorro-antd/list';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   declarations: [TaskFormComponent, TasksComponent],
@@ -27,6 +29,8 @@ import { NzListModule } from 'ng-zorro-antd/list';
     NzIconModule,
     NzLayoutModule,
     NzListModule,
+    NzCheckboxModule,
+    NzDividerModule,
   ],
 })
 export class TasksModule {}

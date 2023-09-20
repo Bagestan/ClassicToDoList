@@ -5,6 +5,7 @@ import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
   { path: 'form', component: TaskFormComponent },
+  { path: 'form/:id', component: TaskFormComponent },
   { path: '', component: TasksComponent },
 ];
 

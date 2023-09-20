@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Task } from '../models/model';
 import { RealtimeService } from 'src/app/services/realtime.service';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-tasks',
@@ -10,27 +12,45 @@ import { RealtimeService } from 'src/app/services/realtime.service';
 })
 export class TasksComponent {
   uid: string | null;
-  tasks: Task[] = [];
+  tasks!: Task[];
 
-  constructor(private auth: AuthService, private db: RealtimeService) {
-    this.uid = this.gerUid();
+  constructor(
+    private auth: AuthService,
+    private db: RealtimeService,
+    private router: Router,
+    private message: NzMessageService
+  ) {
+    this.uid = this.auth.getUid();
 
     if (this.uid) {
-      this.getUserTasks(this.uid);
+      this.getUserTasks();
     }
   }
 
-  getUserTasks(uid: string) {
-    this.db.getUserTasks(uid).subscribe((data) => {
+  getUserTasks() {
+    this.db.getUserTasks().subscribe((data) => {
       this.tasks = data as Task[];
     });
   }
 
-  gerUid() {
-    return this.auth.getUid();
+  newTask() {
+    this.router.navigate(['tasks', 'form']);
   }
 
-  signOut() {
-    this.auth.signOut();
+  doneTask(task: Task) {
+    task.done = !task.done;
+    this.updateTask(task);
+  }
+
+  updateTask(task: Task) {
+    try {
+      this.db.updateTask(task).then(() => this.message.success('Salvo'));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  editTask(task: Task) {
+    this.router.navigate([`tasks/form/${task.id}`]);
   }
 }

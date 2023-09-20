@@ -1,18 +1,21 @@
-h1 {
-  color: white;
-  margin: auto 0;
+nz-content {
+  max-width: 60rem;
+  margin: auto;
+  padding: 1rem;
 }
-nz-header {
+
+.task-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0 0 10px 10px;
 }
 
-nz-content {
-  margin: 2rem;
+.task-header > h2 {
+  color: black;
+  text-align: center;
+  margin: auto 0;
 }
 
-.header-options {
-  display: flex;
+nz-divider {
+  margin: 0.5rem 0;
 }
