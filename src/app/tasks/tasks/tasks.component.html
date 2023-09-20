@@ -3,11 +3,12 @@
     <h2>Tasks</h2>
 
     <button
-      class="border-radius icon-button margin-right"
+      class="border-radius margin-right"
       nzType="default"
       nz-button
       (click)="newTask()"
     >
+      Nova
       <span nz-icon nzType="plus" nzTheme="outline"></span>
     </button>
   </div>
@@ -30,7 +31,7 @@
           <nz-list-item-action>
             <button
               class="border-radius icon-button task-option"
-              [nzType]="task.done ? 'default' : 'primary'"
+              [nzType]="task.done ? 'primary' : 'default'"
               nz-button
               (click)="doneTask(task)"
             >

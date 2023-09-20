@@ -8,8 +8,18 @@ form {
   align-items: center;
 }
 
+.task-header > h2 {
+  color: black;
+  text-align: center;
+  margin: auto 0;
+}
+
 nz-content {
   max-width: 60rem;
   margin: auto;
   padding: 1rem;
+}
+
+.button-group {
+  gap: 0.5rem;
 }

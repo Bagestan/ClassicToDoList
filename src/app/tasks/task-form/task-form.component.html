@@ -8,7 +8,7 @@
       nz-button
       (click)="close()"
     >
-      <span nz-icon nzType="close" nzTheme="outline"></span>
+      <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
     </button>
   </div>
 
@@ -43,26 +43,41 @@
     </nz-form-item>
 
     <div class="space-between">
+      <div class="button-group">
+        <button
+          nz-button
+          class="border-radius"
+          nzType="default"
+          (click)="submit()"
+        >
+          Salvar
+        </button>
+
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <button
+          *ngIf="task"
+          class="border-radius"
+          [nzType]="task.done ? 'primary' : 'default'"
+          nz-button
+          (click)="doneTask(task)"
+        >
+          <span *ngIf="!task.done">Completar</span>
+          <span
+            nz-icon
+            [nzType]="task.done ? 'check' : 'border'"
+            nzTheme="outline"
+          ></span>
+        </button>
+      </div>
+
       <button
         nz-button
-        class="border-radius"
+        class="border-radius margin-right"
         nzType="default"
         (click)="submit()"
       >
-        Salvar
-      </button>
-      <button
-        *ngIf="task"
-        class="border-radius icon-button task-option margin-right"
-        [nzType]="task.done ? 'default' : 'primary'"
-        nz-button
-      >
-        <span
-          (click)="doneTask(task)"
-          nz-icon
-          [nzType]="task.done ? 'check' : 'border'"
-          nzTheme="outline"
-        ></span>
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
       </button>
     </div>
   </form>
