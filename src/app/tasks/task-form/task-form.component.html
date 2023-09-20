@@ -53,7 +53,7 @@
           Salvar
         </button>
 
-        <nz-divider nzType="vertical"></nz-divider>
+        <nz-divider *ngIf="task" nzType="vertical"></nz-divider>
 
         <button
           *ngIf="task"
@@ -72,6 +72,7 @@
       </div>
 
       <button
+        *ngIf="task"
         nz-button
         class="border-radius margin-right"
         nzType="default"
