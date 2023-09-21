@@ -15,9 +15,11 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { HeaderComponent } from './header/header.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
-  declarations: [TaskFormComponent, TasksComponent],
+  declarations: [TaskFormComponent, TasksComponent, HeaderComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -31,6 +33,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzListModule,
     NzCheckboxModule,
     NzDividerModule,
+    NzDropDownModule,
   ],
 })
 export class TasksModule {}
