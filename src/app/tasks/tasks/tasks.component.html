@@ -5,7 +5,7 @@
     <h2>Tasks</h2>
 
     <button
-      class="border-radius margin-right"
+      class="border-radius margin-right button-color"
       nzType="default"
       nz-button
       (click)="newTask()"
@@ -32,7 +32,7 @@
         <ul nz-list-item-actions>
           <nz-list-item-action>
             <button
-              class="border-radius icon-button task-option"
+              class="border-radius icon-button task-option button-color"
               [nzType]="task.done ? 'primary' : 'default'"
               nz-button
               (click)="doneTask(task)"
@@ -47,7 +47,7 @@
           <nz-list-item-action>
             <button
               (click)="editTask(task)"
-              class="border-radius task-option"
+              class="border-radius task-option icon-button button-color"
               nzType="default"
               nz-button
             >

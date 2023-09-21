@@ -45,7 +45,9 @@ export class AuthService {
   }
 
   async logout() {
-    await this.angularAuth.signOut().then(() => this.router.navigate(['']));
+    await this.angularAuth
+      .signOut()
+      .then(() => this.router.navigate(['auth/signin']));
   }
 
   async forgetPassword(email: string): Promise<any> {

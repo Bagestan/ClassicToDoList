@@ -3,7 +3,7 @@
 
   <div class="header-options">
     <button
-      class="border-radius icon-button margin-right"
+      class="border-radius icon-button margin-right button-color"
       nz-button
       nz-dropdown
       [nzDropdownMenu]="menu2"
@@ -16,6 +16,6 @@
 
 <nz-dropdown-menu #menu2="nzDropdownMenu">
   <ul nz-menu>
-    <li nz-menu-item (click)="logout()">Deslogar</li>
+    <li nz-menu-item (click)="logout()" nzDanger>Deslogar</li>
   </ul>
 </nz-dropdown-menu>
