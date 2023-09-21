@@ -43,9 +43,9 @@ export class RealtimeService {
     }
   }
 
-  async deleteTask(task: Task) {
+   deleteTask(task: Task) {
     if (task.id)
-      await this.db
+      this.db
         .list('tasks' + this.uid)
         .remove(task.id)
         .catch((error) => console.error(error));

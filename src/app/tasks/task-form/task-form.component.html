@@ -2,7 +2,7 @@
 
 <nz-content>
   <div class="task-header">
-    <h2 style="color: black">New Task</h2>
+    <h2>New Task</h2>
 
     <button
       class="border-radius icon-button margin-right"
@@ -10,7 +10,12 @@
       nz-button
       (click)="close()"
     >
-      <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+      <span
+        class="central"
+        nz-icon
+        nzType="arrow-left"
+        nzTheme="outline"
+      ></span>
     </button>
   </div>
 
@@ -60,7 +65,7 @@
         <button
           *ngIf="task"
           class="border-radius"
-          [nzType]="task.done ? 'primary' : 'default'"
+          [nzType]="task.done ? 'default' : 'primary'"
           nz-button
           (click)="doneTask(task)"
         >

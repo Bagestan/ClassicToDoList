@@ -32,8 +32,18 @@
         <ul nz-list-item-actions>
           <nz-list-item-action>
             <button
+              (click)="editTask(task)"
+              class="border-radius task-option icon-button button-color"
+              nzType="default"
+              nz-button
+            >
+              <span nz-icon nzType="edit" nzTheme="outline"></span>
+            </button>
+          </nz-list-item-action>
+          <nz-list-item-action>
+            <button
               class="border-radius icon-button task-option button-color"
-              [nzType]="task.done ? 'primary' : 'default'"
+              [nzType]="task.done ? 'default' : 'primary'"
               nz-button
               (click)="doneTask(task)"
             >
@@ -42,16 +52,6 @@
                 [nzType]="task.done ? 'check' : 'border'"
                 nzTheme="outline"
               ></span>
-            </button>
-          </nz-list-item-action>
-          <nz-list-item-action>
-            <button
-              (click)="editTask(task)"
-              class="border-radius task-option icon-button button-color"
-              nzType="default"
-              nz-button
-            >
-              <span nz-icon nzType="edit" nzTheme="outline"></span>
             </button>
           </nz-list-item-action>
         </ul>
