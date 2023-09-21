@@ -44,6 +44,10 @@ export class AuthService {
     return this.angularAuth.createUserWithEmailAndPassword(email, pasword);
   }
 
+  async logout() {
+    await this.angularAuth.signOut().then(() => this.router.navigate(['']));
+  }
+
   async forgetPassword(email: string): Promise<any> {
     return this.angularAuth
       .sendPasswordResetEmail(email)

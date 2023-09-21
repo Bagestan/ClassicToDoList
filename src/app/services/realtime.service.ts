@@ -42,4 +42,12 @@ export class RealtimeService {
       console.error(error);
     }
   }
+
+  async deleteTask(task: Task) {
+    if (task.id)
+      await this.db
+        .list('tasks' + this.uid)
+        .remove(task.id)
+        .catch((error) => console.error(error));
+  }
 }

@@ -102,6 +102,13 @@ export class TaskFormComponent {
     }
   }
 
+  deleteTask(task: Task) {
+    this.realtimeDB.deleteTask(task).then(() => {
+      this.successMessage();
+      this.router.navigate(['tasks']);
+    });
+  }
+
   successMessage() {
     this.message.success('Tarefa salva');
   }

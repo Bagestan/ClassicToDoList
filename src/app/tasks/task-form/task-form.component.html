@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <nz-content>
   <div class="task-header">
     <h2 style="color: black">New Task</h2>
@@ -62,7 +64,7 @@
           nz-button
           (click)="doneTask(task)"
         >
-          <span *ngIf="!task.done">Completar</span>
+          <span>{{ task.done ? "" : "Completar" }}</span>
           <span
             nz-icon
             [nzType]="task.done ? 'check' : 'border'"
@@ -76,7 +78,7 @@
         nz-button
         class="border-radius margin-right"
         nzType="default"
-        (click)="submit()"
+        (click)="deleteTask(task)"
       >
         <span nz-icon nzType="delete" nzTheme="outline"></span>
       </button>
