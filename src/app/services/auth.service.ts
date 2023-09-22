@@ -68,5 +68,11 @@ export class AuthService {
     this.router.navigate(['/auth', 'signin']);
   }
 
-  enterWithoutRegistration() {}
+  signInAnonymously() {
+    this.angularAuth.signInAnonymously().then((test) => {
+      console.log(test);
+
+      this.router.navigate(['']);
+    });
+  }
 }

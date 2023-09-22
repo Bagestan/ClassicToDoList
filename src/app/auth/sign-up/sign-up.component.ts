@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -23,7 +24,8 @@ export class SignUpComponent {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
@@ -49,7 +51,7 @@ export class SignUpComponent {
           this.message.success(`Usuário ${email} criado com sucesso`, {
             nzDuration: 2500,
           }).onClose!;
-          console.log('🚀 ~ result:', result);
+          this.router.navigate([''])
         })
         .catch((error) => {
           this.form.setValue({

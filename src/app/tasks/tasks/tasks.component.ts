@@ -4,6 +4,7 @@ import { Task } from '../models/model';
 import { RealtimeService } from 'src/app/services/realtime.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -15,6 +16,7 @@ export class TasksComponent {
   tasks!: Task[];
 
   constructor(
+    private taskService:TasksService,
     private auth: AuthService,
     private db: RealtimeService,
     private router: Router,

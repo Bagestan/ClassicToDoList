@@ -49,5 +49,7 @@ export class SignInComponent {
     }
   }
 
-  enterWithoutRegistration() {}
+  signInAnonymously() {
+    this.auth.signInAnonymously()
+  }
 }
