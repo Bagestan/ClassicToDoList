@@ -71,9 +71,12 @@ export class AuthService {
   }
 
   signInAnonymously() {
-    this.angularAuth.signInAnonymously().then(() => {
-      this.router.navigate(['']);
-      this.tasksService.insertDefaultTask();
-    });
+    this.angularAuth
+      .signInAnonymously()
+      .then(() => {
+        this.router.navigate(['']);
+        this.tasksService.insertDefaultTask();
+      })
+      .catch((error) => console.error(error));
   }
 }
