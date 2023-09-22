@@ -15,5 +15,10 @@
 
 
 ### Screenshots
-![image](https://github.com/Bagestan/ClassicToDoList/assets/101228629/dfee1fff-cc3a-44e3-80bd-91da63c06818)
-![image](https://github.com/Bagestan/ClassicToDoList/assets/101228629/1538084e-ad29-40b3-b66d-601d5a243558)
+
+![image](https://github.com/Bagestan/StandardToDoList/assets/101228629/7a3bca34-7d9b-4f53-b14c-0f6911293212)
+
+![image](https://github.com/Bagestan/StandardToDoList/assets/101228629/cc38cffa-a6d6-4cbe-af62-b4b7b521dc60)
+
+![image](https://github.com/Bagestan/StandardToDoList/assets/101228629/a5a64621-cdc9-4376-a0de-1ac964ac279e)
+
