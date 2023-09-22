@@ -43,7 +43,7 @@ export class RealtimeService {
     }
   }
 
-   deleteTask(task: Task) {
+  deleteTask(task: Task) {
     if (task.id)
       this.db
         .list('tasks' + this.uid)

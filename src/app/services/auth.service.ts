@@ -1,3 +1,4 @@
+import { TasksService } from 'src/app/services/tasks.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { catchError, from, of } from 'rxjs';
@@ -14,7 +15,8 @@ export class AuthService {
   constructor(
     private angularAuth: AngularFireAuth,
     private message: NzMessageService,
-    private router: Router
+    private router: Router,
+    private tasksService: TasksService
   ) {}
 
   getUid() {
@@ -69,10 +71,9 @@ export class AuthService {
   }
 
   signInAnonymously() {
-    this.angularAuth.signInAnonymously().then((test) => {
-      console.log(test);
-
+    this.angularAuth.signInAnonymously().then(() => {
       this.router.navigate(['']);
+      this.tasksService.insertDefaultTask();
     });
   }
 }

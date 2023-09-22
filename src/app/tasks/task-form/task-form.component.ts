@@ -69,7 +69,6 @@ export class TaskFormComponent {
 
   doneTask(task: Task) {
     task.done = !task.done;
-    console.log(task);
     this.realtimeDB.updateTask(task).then(() => this.message.success('Salvo'));
   }
 
@@ -103,7 +102,7 @@ export class TaskFormComponent {
   }
 
   deleteTask(task: Task) {
-    this.realtimeDB.deleteTask(task)
+    this.realtimeDB.deleteTask(task);
   }
 
   successMessage() {
