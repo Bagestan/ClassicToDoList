@@ -1,4 +1,4 @@
-# ClassicToDoList App
+# StandardToDoList App
 
 ### Acesse pelo link: https://standardtodolist.web.app/
 
